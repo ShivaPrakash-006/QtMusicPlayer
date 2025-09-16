@@ -10,9 +10,11 @@ class Player
 protected:
     QMediaPlayer *player;
     QAudioOutput *output;
+    bool playing;
 public:
     Player();
     void playSong(QString filePath);
+    void togglePause();
 };
 #endif // MEDIAPLAYER_H
 
