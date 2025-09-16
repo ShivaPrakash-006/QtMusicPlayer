@@ -2,9 +2,8 @@
 #define MEDIAPLAYER_H
 #include <QCoreApplication>
 #include <QMediaPlayer>
-#include <QTimer>
-#include <QDebug>
 #include <QAudioOutput>
+
 class Player
 {
 protected:
@@ -16,5 +15,6 @@ public:
     void playSong(QString filePath);
     void togglePause();
 };
+
 #endif // MEDIAPLAYER_H
 

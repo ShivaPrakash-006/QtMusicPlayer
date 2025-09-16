@@ -1,27 +1,28 @@
-#include"mediaPlayer.h"
+#include "mediaPlayer.h"
+
 Player::Player(void)
 {
-    output=new QAudioOutput;
-    player=new QMediaPlayer;
+    output = new QAudioOutput;
+    player = new QMediaPlayer;
     player->setAudioOutput(output);
-    playing=false;
+    playing = false;
 }
-void Player:: playSong(QString filePath)
+void Player::playSong(QString filePath)
 {
-    playing=true;
+    playing = true;
     player->setSource(QUrl::fromLocalFile(filePath));
     player->play();
 }
 void Player::togglePause()
 {
-    if(playing)
+    if (playing)
     {
-        playing=false;
+        playing = false;
         player->pause();
     }
     else
     {
-        playing=true;
+        playing = true;
         player->play();
     }
 }

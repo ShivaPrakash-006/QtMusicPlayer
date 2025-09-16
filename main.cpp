@@ -1,6 +1,8 @@
 #include "mainwindow.h"
+#include "mediaPlayer.h"
+
 #include <QApplication>
-#include"mediaPlayer.h"
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
