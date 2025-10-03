@@ -19,6 +19,8 @@ set(PROJECT_SOURCES
         mainwindow.ui
         databaseManager.h
         databaseManager.cpp
+        mediaPlayer.h
+        mediaPlayer.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
