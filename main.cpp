@@ -1,4 +1,7 @@
 #include "mainwindow.h"
+#include "databaseManager.h"
+#include <QtSql/QSqlQuery>
+#include "mediaPlayer.h"
 
 #include <QApplication>
 #include<iostream>
@@ -8,7 +11,8 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
-    cout << "hello world";
+    QSqlDatabase mainDatabase = initConnectDatabase();
+    indexer(&mainDatabase);
     return a.exec();
 }
 
