@@ -746,6 +746,7 @@ QSlider::handle:horizontal:pressed {
 }
 
 QToolButton {
+	padding: 6px;
     background: transparent;
     border: transparent;
 	border-radius: 4px;
@@ -753,6 +754,7 @@ QToolButton {
 }
 
 QToolButton:hover {
+	padding: 3px;
     background: rgba(255,255,255,0.1);
 }
 </string>
@@ -1061,13 +1063,20 @@ QToolButton:hover {
             </property>
             <property name="icon">
              <iconset resource="icons.qrc">
-              <normaloff>:/icons/Assets/Icons/home.svg</normaloff>:/icons/Assets/Icons/home.svg</iconset>
+              <normaloff>:/icons/Assets/Icons/home.svg</normaloff>
+              <normalon>:/icons/Assets/Icons/home-on.svg</normalon>:/icons/Assets/Icons/home.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
               <width>25</width>
               <height>25</height>
              </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>true</bool>
             </property>
             <property name="autoRaise">
              <bool>true</bool>
@@ -1343,13 +1352,20 @@ QToolButton:hover {
             </property>
             <property name="icon">
              <iconset resource="icons.qrc">
-              <normaloff>:/icons/Assets/Icons/search.svg</normaloff>:/icons/Assets/Icons/search.svg</iconset>
+              <normaloff>:/icons/Assets/Icons/search.svg</normaloff>
+              <normalon>:/icons/Assets/Icons/search-on.svg</normalon>:/icons/Assets/Icons/search.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
               <width>25</width>
               <height>25</height>
              </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>true</bool>
             </property>
             <property name="autoRaise">
              <bool>true</bool>
@@ -1625,13 +1641,20 @@ QToolButton:hover {
             </property>
             <property name="icon">
              <iconset resource="icons.qrc">
-              <normaloff>:/icons/Assets/Icons/library.svg</normaloff>:/icons/Assets/Icons/library.svg</iconset>
+              <normaloff>:/icons/Assets/Icons/library.svg</normaloff>
+              <normalon>:/icons/Assets/Icons/library-on.svg</normalon>:/icons/Assets/Icons/library.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
               <width>25</width>
               <height>25</height>
              </size>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>true</bool>
             </property>
             <property name="toolButtonStyle">
              <enum>Qt::ToolButtonStyle::ToolButtonIconOnly</enum>
@@ -1701,21 +1724,6 @@ QToolButton:hover {
        </sizepolicy>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
        <item>
         <widget class="QFrame" name="playBar">
          <property name="sizePolicy">
@@ -1757,7 +1765,22 @@ QToolButton:hover {
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="10,1,1,1,1,1,10">
+            <property name="styleSheet">
+             <string notr="true">QToolButton {
+	padding: 8px;
+    background: transparent;
+    border: transparent;
+	border-radius: 8px;
+    color: white;
+	transition: 
+}
+
+QToolButton:hover {
+    background: rgba(255,255,255,0.1);
+}
+</string>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="15,1,1,1,1,0,15">
              <item>
               <spacer name="horizontalSpacer">
                <property name="orientation">
@@ -1784,13 +1807,20 @@ QToolButton:hover {
                </property>
                <property name="icon">
                 <iconset resource="icons.qrc">
-                 <normaloff>:/icons/Assets/Icons/shuffle-off.svg</normaloff>:/icons/Assets/Icons/shuffle-off.svg</iconset>
+                 <normaloff>:/icons/Assets/Icons/shuffle-off.svg</normaloff>
+                 <normalon>:/icons/Assets/Icons/shuffle-on.svg</normalon>:/icons/Assets/Icons/shuffle-off.svg</iconset>
                </property>
                <property name="iconSize">
                 <size>
                  <width>20</width>
                  <height>20</height>
                 </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
                </property>
               </widget>
              </item>
@@ -1830,13 +1860,20 @@ QToolButton:hover {
                </property>
                <property name="icon">
                 <iconset resource="icons.qrc">
-                 <normaloff>:/icons/Assets/Icons/play.svg</normaloff>:/icons/Assets/Icons/play.svg</iconset>
+                 <normaloff>:/icons/Assets/Icons/play.svg</normaloff>
+                 <normalon>:/icons/Assets/Icons/pause.svg</normalon>:/icons/Assets/Icons/play.svg</iconset>
                </property>
                <property name="iconSize">
                 <size>
                  <width>20</width>
                  <height>20</height>
                 </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
                </property>
               </widget>
              </item>
@@ -1867,22 +1904,35 @@ QToolButton:hover {
               <widget class="QToolButton" name="repeat">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
+                 <horstretch>1</horstretch>
+                 <verstretch>1</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="acceptDrops">
+                <bool>false</bool>
                </property>
                <property name="text">
                 <string>...</string>
                </property>
                <property name="icon">
                 <iconset resource="icons.qrc">
-                 <normaloff>:/icons/Assets/Icons/repeat-off.svg</normaloff>:/icons/Assets/Icons/repeat-off.svg</iconset>
+                 <normaloff>:/icons/Assets/Icons/repeat-off.svg</normaloff>
+                 <normalon>:/icons/Assets/Icons/repeat-on.svg</normalon>:/icons/Assets/Icons/repeat-off.svg</iconset>
                </property>
                <property name="iconSize">
                 <size>
                  <width>20</width>
                  <height>20</height>
                 </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+               <property name="autoRaise">
+                <bool>false</bool>
                </property>
               </widget>
              </item>
@@ -1910,23 +1960,11 @@ QToolButton:hover {
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,30">
-             <property name="leftMargin">
-              <number>6</number>
-             </property>
-             <property name="topMargin">
-              <number>6</number>
-             </property>
-             <property name="rightMargin">
-              <number>6</number>
-             </property>
-             <property name="bottomMargin">
-              <number>6</number>
-             </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
              <item>
               <widget class="QLabel" name="songTime">
                <property name="text">
-                <string>3:00:00</string>
+                <string>3:00</string>
                </property>
                <property name="scaledContents">
                 <bool>false</bool>
@@ -1955,11 +1993,30 @@ QToolButton:hover {
                </property>
               </widget>
              </item>
+             <item>
+              <widget class="QLabel" name="totalSongTime">
+               <property name="text">
+                <string>3:00</string>
+               </property>
+               <property name="scaledContents">
+                <bool>false</bool>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
             </layout>
            </widget>
           </item>
          </layout>
         </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="songOptions" native="true"/>
+       </item>
+       <item>
+        <widget class="QWidget" name="songDetails" native="true"/>
        </item>
       </layout>
      </widget>
