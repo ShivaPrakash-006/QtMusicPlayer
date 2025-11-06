@@ -1075,6 +1075,9 @@ QToolButton:hover {
             <property name="checkable">
              <bool>true</bool>
             </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
             <property name="autoExclusive">
              <bool>true</bool>
             </property>
@@ -1652,6 +1655,9 @@ QToolButton:hover {
             </property>
             <property name="checkable">
              <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
             </property>
             <property name="autoExclusive">
              <bool>true</bool>
