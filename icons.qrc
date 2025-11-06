@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>Assets/Icons/home-on.svg</file>
+        <file>Assets/Icons/home.svg</file>
+        <file>Assets/Icons/library-on.svg</file>
+        <file>Assets/Icons/library.svg</file>
+        <file>Assets/Icons/next.svg</file>
+        <file>Assets/Icons/pause.svg</file>
+        <file>Assets/Icons/play.svg</file>
+        <file>Assets/Icons/previous.svg</file>
+        <file>Assets/Icons/repeat-off.svg</file>
+        <file>Assets/Icons/repeat-on.svg</file>
+        <file>Assets/Icons/search-on.svg</file>
+        <file>Assets/Icons/search.svg</file>
+        <file>Assets/Icons/shuffle-off.svg</file>
+        <file>Assets/Icons/shuffle-on.svg</file>
+    </qresource>
+</RCC>
