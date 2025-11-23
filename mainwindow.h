@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtSql>
+#include <QTableWidget>
+#include "mediaPlayer.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -12,10 +15,29 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+    QSqlDatabase database;
+    Player *player;
 
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    QSqlDatabase* getDatabase();
+    void loadSongTable(QTableWidget *table, QString tableName);
+    void updateProgress(qint64 progress);
+    void updateDuration(qint64 duration);
+    void updateSongDetails();
+
+private slots:
+    void on_homeButton_clicked();
+
+    void on_songList_cellDoubleClicked(int row, int column);
+
+    void on_pause_play_clicked();
+
+    void on_previous_clicked();
+
+    void on_next_clicked();
 
 private:
     Ui::MainWindow *ui;
