@@ -102,3 +102,15 @@ void indexer(QSqlDatabase *mainDatabase){
     mainDatabase->close();
     metadataFetcher->deleteLater();
 }
+
+QString getPath(QSqlDatabase *database, int song_id) {
+    database->open();
+    QSqlQuery getFilePath;
+    getFilePath.prepare("SELECT * FROM library WHERE song_id = ?");
+    getFilePath.addBindValue(song_id);
+    getFilePath.exec();
+    getFilePath.next();
+    auto path = getFilePath.value(1).toString();
+    database->close();
+    return path;
+}

@@ -1783,7 +1783,7 @@ QToolButton:hover {
              <bool>false</bool>
             </attribute>
             <attribute name="verticalHeaderStretchLastSection">
-             <bool>true</bool>
+             <bool>false</bool>
             </attribute>
             <column>
              <property name="text">

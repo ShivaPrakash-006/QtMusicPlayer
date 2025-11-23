@@ -30,6 +30,12 @@ private slots:
 
     void on_songList_cellDoubleClicked(int row, int column);
 
+    void on_pause_play_clicked();
+
+    void on_previous_clicked();
+
+    void on_next_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

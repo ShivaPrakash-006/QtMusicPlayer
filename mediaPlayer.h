@@ -10,8 +10,11 @@ protected:
     QMediaPlayer *player;
     QAudioOutput *output;
     bool playing;
+    int currentSongId;
 public:
     Player();
+    void setCurrentSong(int song_id);
+    int getCurrentSong();
     void playSong(QString filePath);
     void togglePause();
 };

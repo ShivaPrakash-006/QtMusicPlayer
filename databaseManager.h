@@ -4,5 +4,6 @@
 
 QSqlDatabase initConnectDatabase();
 void indexer(QSqlDatabase *mainDatabase);
+QString getPath(QSqlDatabase *database, int song_id);
 
 #endif // DATABASEMANAGER_H

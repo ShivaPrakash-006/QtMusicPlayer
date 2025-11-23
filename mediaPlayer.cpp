@@ -1,5 +1,5 @@
 #include "mediaPlayer.h"
-
+#include "databaseManager.h"
 Player::Player(void)
 {
     output = new QAudioOutput;
@@ -7,6 +7,10 @@ Player::Player(void)
     player->setAudioOutput(output);
     playing = false;
 }
+void Player::setCurrentSong(int songId) {
+    currentSongId = songId;
+}
+int Player::getCurrentSong() {return currentSongId;}
 void Player::playSong(QString filePath)
 {
     playing = true;

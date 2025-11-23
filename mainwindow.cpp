@@ -48,14 +48,42 @@ void MainWindow::on_homeButton_clicked()
 
 void MainWindow::on_songList_cellDoubleClicked(int row, int column)
 {
-    int song_id = row+1;
-    database.open();
-    QSqlQuery getFilePath;
-    getFilePath.prepare("SELECT * FROM library WHERE song_id = ?");
-    getFilePath.addBindValue(song_id);
-    getFilePath.exec();
-    getFilePath.next();
-    QString path = getFilePath.value(1).toString();
+    auto path = getPath(&database, row+1);
     player->playSong(path);
+    player->setCurrentSong(row+1);
+    ui->pause_play->setChecked(true);
+}
+
+void MainWindow::on_pause_play_clicked()
+{
+    player->togglePause();
+}
+
+
+void MainWindow::on_previous_clicked()
+{
+    int song = player->getCurrentSong();
+    if (song > 1)
+        song--;
+    auto path = getPath(&database, song);
+    player->playSong(path);
+    player->setCurrentSong(song);
+    ui->pause_play->setChecked(true);
+}
+
+
+void MainWindow::on_next_clicked()
+{
+    int song = player->getCurrentSong();
+    database.open();
+    QSqlQuery max("Select count(*) FROM library");
+    max.next();
+    int max_songs = max.value(0).toInt();
+    if (song < max_songs)
+        song++;
+    auto path = getPath(&database, song);
+    player->playSong(path);
+    player->setCurrentSong(song);
+    ui->pause_play->setChecked(true);
 }
 
