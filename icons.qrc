@@ -15,4 +15,7 @@
         <file>Assets/Icons/shuffle-off.svg</file>
         <file>Assets/Icons/shuffle-on.svg</file>
     </qresource>
+    <qresource prefix="/images">
+        <file>Assets/default.png</file>
+    </qresource>
 </RCC>

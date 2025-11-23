@@ -26,6 +26,7 @@ public:
     void loadSongTable(QTableWidget *table, QString tableName);
     void updateProgress(qint64 progress);
     void updateDuration(qint64 duration);
+    void updateSongDetails();
 
 private slots:
     void on_homeButton_clicked();

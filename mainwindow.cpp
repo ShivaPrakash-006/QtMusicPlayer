@@ -3,6 +3,7 @@
 #include <QtWidgets/QTableWidget>
 #include "databaseManager.h"
 #include "mediaPlayer.h"
+#include <QMediaMetaData>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -17,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->timeProgress, &QSlider::sliderMoved, this, [&](int value) {
         player->setPosition(value);
     });
+    connect(player->getMediaPlayer(), &QMediaPlayer::metaDataChanged, this, &MainWindow::updateSongDetails);
 }
 
 MainWindow::~MainWindow()
@@ -40,6 +42,20 @@ void MainWindow::updateDuration(qint64 duration) {
     seconds %= 60;
     QString timeText = "0" + QString::number(mins) + ":" + QString::number(seconds);
     ui->totalSongTime->setText(timeText);
+}
+
+void MainWindow::updateSongDetails() {
+    QMediaPlayer *mediaPlayer = player->getMediaPlayer();
+    QMediaMetaData metadata = mediaPlayer->metaData();
+
+    auto title = metadata.stringValue(QMediaMetaData::Title);
+    if (title.length() > 30)
+        title = title.sliced(0, 25) + "...";
+    auto artist = metadata.stringValue(QMediaMetaData::ContributingArtist);
+    if (artist.length() > 30)
+        artist = artist.sliced(0, 25) + "...";
+    ui->titleLabel->setText(title);
+    ui->artistLabel->setText(artist);
 }
 
 QSqlDatabase* MainWindow::getDatabase() {
