@@ -24,6 +24,8 @@ public:
 
     QSqlDatabase* getDatabase();
     void loadSongTable(QTableWidget *table, QString tableName);
+    void updateProgress(qint64 progress);
+    void updateDuration(qint64 duration);
 
 private slots:
     void on_homeButton_clicked();

@@ -11,11 +11,35 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     database = initConnectDatabase();
     player = new Player;
+
+    connect(player->getMediaPlayer(), &QMediaPlayer::positionChanged, this, &MainWindow::updateProgress);
+    connect(player->getMediaPlayer(), &QMediaPlayer::durationChanged, this, &MainWindow::updateDuration);
+    connect(ui->timeProgress, &QSlider::sliderMoved, this, [&](int value) {
+        player->setPosition(value);
+    });
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::updateProgress(qint64 progress) {
+    ui->timeProgress->setValue(progress);
+    int seconds = progress/1000;
+    int mins = seconds/60;
+    seconds %= 60;
+    QString timeText = "0" + QString::number(mins) + ":" + QString::number(seconds);
+    ui->songTime->setText(timeText);
+}
+
+void MainWindow::updateDuration(qint64 duration) {
+    ui->timeProgress->setMaximum(duration);
+    int seconds = duration/1000;
+    int mins = seconds/60;
+    seconds %= 60;
+    QString timeText = "0" + QString::number(mins) + ":" + QString::number(seconds);
+    ui->totalSongTime->setText(timeText);
 }
 
 QSqlDatabase* MainWindow::getDatabase() {
