@@ -594,6 +594,14 @@ QSlider::handle:horizontal:hover {
 QSlider::handle:horizontal:pressed {
     background: #1ed760;       /* lighter Spotify green */
     border: 2px solid #1DB954;
+}
+
+QLabel {
+	color: white
+}
+
+QTableView {
+	color: white
 }</string>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout" stretch="7,1">
@@ -1716,7 +1724,25 @@ QToolButton:hover {
          <property name="frameShadow">
           <enum>QFrame::Shadow::Sunken</enum>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_4">
+         <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,20">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <widget class="QToolButton" name="searchButton_2">
+              <property name="text">
+               <string>...</string>
+              </property>
+              <property name="icon">
+               <iconset resource="icons.qrc">
+                <normaloff>:/icons/Assets/Icons/search.svg</normaloff>:/icons/Assets/Icons/search.svg</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="searchBar"/>
+            </item>
+           </layout>
+          </item>
           <item>
            <widget class="QTableWidget" name="songList">
             <property name="frameShape">

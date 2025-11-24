@@ -23,10 +23,11 @@ public:
     ~MainWindow();
 
     QSqlDatabase* getDatabase();
-    void loadSongTable(QTableWidget *table, QString tableName);
+    void loadSongTable(QTableWidget *table, QString tableName, QString searchQuery);
     void updateProgress(qint64 progress);
     void updateDuration(qint64 duration);
     void updateSongDetails();
+    void endOfSong(QMediaPlayer::MediaStatus mediaStatus);
 
 private slots:
     void on_homeButton_clicked();
@@ -38,6 +39,8 @@ private slots:
     void on_previous_clicked();
 
     void on_next_clicked();
+
+    void on_searchButton_2_clicked();
 
 private:
     Ui::MainWindow *ui;
