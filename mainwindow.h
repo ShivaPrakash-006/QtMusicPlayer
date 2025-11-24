@@ -27,6 +27,7 @@ public:
     void updateProgress(qint64 progress);
     void updateDuration(qint64 duration);
     void updateSongDetails();
+    void endOfSong(QMediaPlayer::MediaStatus mediaStatus);
 
 private slots:
     void on_homeButton_clicked();

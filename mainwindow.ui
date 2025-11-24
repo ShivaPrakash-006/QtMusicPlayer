@@ -594,6 +594,14 @@ QSlider::handle:horizontal:hover {
 QSlider::handle:horizontal:pressed {
     background: #1ed760;       /* lighter Spotify green */
     border: 2px solid #1DB954;
+}
+
+QLabel {
+	color: white
+}
+
+QTableView {
+	color: white
 }</string>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout" stretch="7,1">
