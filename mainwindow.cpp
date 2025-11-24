@@ -53,10 +53,10 @@ void MainWindow::updateSongDetails() {
     QMediaMetaData metadata = mediaPlayer->metaData();
 
     auto title = metadata.stringValue(QMediaMetaData::Title);
-    if (title.length() > 30)
+    if (title.length() > 25)
         title = title.sliced(0, 25) + "...";
     auto artist = metadata.stringValue(QMediaMetaData::ContributingArtist);
-    if (artist.length() > 30)
+    if (artist.length() > 25)
         artist = artist.sliced(0, 25) + "...";
     ui->titleLabel->setText(title);
     ui->artistLabel->setText(artist);
@@ -77,7 +77,7 @@ void MainWindow::endOfSong(QMediaPlayer::MediaStatus mediaStatus) {
             nextSong++;
         }
         else if (shuffle) {
-            nextSong = rand() % maxNo;
+            nextSong = rand() % maxNo + 1;
         }
 
         auto path = getPath(&database, nextSong);
@@ -132,8 +132,14 @@ void MainWindow::on_pause_play_clicked()
 void MainWindow::on_previous_clicked()
 {
     int song = player->getCurrentSong();
+    database.open();
+    QSqlQuery max("Select count(*) FROM library");
+    max.next();
+    int max_songs = max.value(0).toInt();
     if (song > 1)
         song--;
+    else
+        song = max_songs;
     auto path = getPath(&database, song);
     player->playSong(path);
     player->setCurrentSong(song);
@@ -152,8 +158,9 @@ void MainWindow::on_next_clicked()
         song = 0;
     song++;
     if (ui->shuffle->isChecked()) {
-        song = rand() % max_songs;
+        song = rand() % max_songs + 1;
     }
+    ui->repeat->setChecked(false);
 
     auto path = getPath(&database, song);
     player->playSong(path);
@@ -165,5 +172,6 @@ void MainWindow::on_next_clicked()
 void MainWindow::on_searchButton_2_clicked()
 {
     loadSongTable(ui->songList, "library", ui->searchBar->text());
+    ui->searchButton->setChecked(true);
 }
 

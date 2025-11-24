@@ -2,9 +2,8 @@
 #include "databaseManager.h"
 #include <QtSql/QSqlQuery>
 #include "mediaPlayer.h"
-
 #include <QApplication>
-#include<iostream>
+
 using namespace std;
 int main(int argc, char *argv[])
 {
