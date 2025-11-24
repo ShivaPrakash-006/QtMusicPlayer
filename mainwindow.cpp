@@ -90,10 +90,10 @@ QSqlDatabase* MainWindow::getDatabase() {
     return &database;
 }
 
-void MainWindow::loadSongTable(QTableWidget *table, QString tableName) {
+void MainWindow::loadSongTable(QTableWidget *table, QString tableName, QString searchQuery="") {
     database.open();
     QSqlQuery songFetcher;
-    songFetcher.exec("SELECT song_id, title, artist, album FROM song_data WHERE song_id IN (SELECT song_id FROM" + tableName + ")");
+    songFetcher.exec("SELECT song_id, title, artist, album FROM song_data WHERE song_id IN (SELECT song_id FROM " + tableName + ") AND (title LIKE '%"+searchQuery+"%' OR artist LIKE '%"+searchQuery+"%' OR album LIKE '%"+searchQuery+"%')" );
     int row_no = 0;
 
     while (songFetcher.next()) {
@@ -116,9 +116,10 @@ void MainWindow::on_homeButton_clicked()
 
 void MainWindow::on_songList_cellDoubleClicked(int row, int column)
 {
-    auto path = getPath(&database, row+1);
+    int song = ui->songList->item(row, 0)->text().toInt();
+    auto path = getPath(&database, song);
     player->playSong(path);
-    player->setCurrentSong(row+1);
+    player->setCurrentSong(song);
     ui->pause_play->setChecked(true);
 }
 
@@ -158,5 +159,11 @@ void MainWindow::on_next_clicked()
     player->playSong(path);
     player->setCurrentSong(song);
     ui->pause_play->setChecked(true);
+}
+
+
+void MainWindow::on_searchButton_2_clicked()
+{
+    loadSongTable(ui->songList, "library", ui->searchBar->text());
 }
 
